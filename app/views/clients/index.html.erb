@@ -1,2 +1,30 @@
-<h1>Clients#index</h1>
-<p>Find me in app/views/clients/index.html.erb</p>
+<h1>Clients</h1>
+<br>
+
+
+<table class="table">
+  <th>Client</th>
+  <th>Create job</th>
+  <th>Create block</th>
+  <th>Delete client</th>
+  <% @clients.each do |client| %>
+	<tr>
+		<td><%= link_to client.name, client_path(client) %></td>
+		<td><%= link_to 'Job', new_job_path, class: "btn btn-primary" %></td>
+		<td><%= link_to 'Block', new_block_path(client: client.id), class: "btn btn-info" %></td>
+		<td><%= link_to 'delete', client_path(client), method: :delete, class: "btn btn-danger" %></td>
+	</tr>
+	<% end %>
+</table>
+<br>
+<%= link_to 'Add Client', new_client_path, class: "btn btn-success" %>
+
+<ul>
+	
+	<li>Make time sensitive so it loads data from last month</li>
+	<li>Use pundit to stop access to other jobs, blocks and clients</li>
+	<li>Add in an overall rate to compare the other rates to. OR a target figure.</li>
+	<li>Then style</li>
+
+</ul>
+
