@@ -1,0 +1,30 @@
+<div class="col-md-8 col-md-offset-2">	
+
+<h1><%= @client.name %></h1>
+
+<p><%= @client.about %></p>
+
+<p>The hourly rate is: <%= @client.rate %></p>
+
+<h3>List of jobs</h3>
+<ul class="list-group">
+<% @client.jobs.each do |a| %>
+<li class="list-group-item"><%= link_to a.name, job_path(a) %> </li>
+<% end %>
+</ul>
+
+<%= link_to 'Delete', client_path, method: :delete, class: "btn btn-danger" %>
+<%= link_to 'Edit', edit_client_path, class: "btn btn-primary" %>
+<%= link_to 'New Job', new_job_path, class: "btn btn-primary" %>
+<%= link_to 'New Block', new_block_path(client: @client.id), class: "btn btn-success" %>
+
+<br>
+<br>
+<p>Things to go in:</p>
+
+<ul>
+	<li>Put in clock</li>
+	<li>paginate jobs by date</li>
+</ul>
+
+</div> 

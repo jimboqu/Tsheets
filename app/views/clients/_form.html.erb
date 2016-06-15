@@ -1,0 +1,23 @@
+<%= simple_form_for @client do |f|%>
+
+<% if @client.errors.any? %>
+
+	<div id="errors">
+		<%= @client.errors.count %> prevented this from saving.
+	</div>
+
+	<ul>
+		<% @client.errors.full_messages.each do |msg| %>
+			<li><%= msg %></li>
+		<% end %>
+	</ul>
+
+<% end %>
+
+<div class="panel-body">
+	<%= f.input :name, input_html: {class: 'form-control'} %>
+	<%= f.input :about, input_html: {class: 'form-control'} %>
+	<%= f.input :rate, input_html: {class: 'form-control'} %>
+</div>
+<%= f.button :submit, class: "btn btn-primary" %>
+<% end %>

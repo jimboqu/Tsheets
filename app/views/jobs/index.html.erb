@@ -1,2 +1,17 @@
-<h1>Jobs#index</h1>
-<p>Find me in app/views/jobs/index.html.erb</p>
+<h1>Jobs Index</h1>
+<br>
+<table class="table table-striped">
+	<th>Client</th>
+	<th>Name</th>
+	
+	<th>Total time</th>
+	<% @jobs.each do |a| %>
+	<tr>
+		<td><%= a.client.name %></td>
+		<td><%= link_to a.name, job_path(a) %></td>
+		
+		<td><%= @more %> mins</td>
+	
+	</tr>
+	<% end %>
+</table>

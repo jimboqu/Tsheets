@@ -1,2 +1,34 @@
-<h1>Jobs#show</h1>
-<p>Find me in app/views/jobs/show.html.erb</p>
+
+<h1><%= @job.name %> job page for '<%= @job.info %>'</h1>
+<h3>For: <%= link_to @job.client.name, client_path(@job.client.id) %></h3>
+
+
+<br>
+
+<table class="table">
+	<tr>
+	<th>Block</th>
+	<th>Date</th>
+	<th>Time</th>
+	</tr>
+	<% @job.blocks.each do |a| %>
+	<tr>
+		
+		<td><%= a.des %></td>
+		<td><%= a.updated_at %></td>
+		<td><%= a.time %></td>
+		
+	</tr>
+	<% end %>
+</table>
+
+<p>Total time:<%= @more %> minutes</p>
+
+<%= link_to 'Edit', edit_job_path, class: "btn btn-primary" %>
+<%= link_to 'Block', new_block_path(client: @job.client_id), class: "btn btn-success" %>
+
+
+
+
+
+
