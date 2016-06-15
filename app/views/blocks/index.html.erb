@@ -1,2 +1,10 @@
-<h1>Blocks#index</h1>
-<p>Find me in app/views/blocks/index.html.erb</p>
+<% @blocks.each do |a| %>
+<ul>
+	<li><strong>Block description: </strong><%= link_to a.des, block_path(a) %></li>
+	<li><strong>Job name:</strong> <%= a.job.name %></li>
+	<li><strong>Client name:</strong> <%= a.job.client.name %></li>
+	<li><strong>Time:</strong><%= a.time %></li>
+</ul>
+<% end %>
+
+<p>Add Kaminari here to paginate</p>

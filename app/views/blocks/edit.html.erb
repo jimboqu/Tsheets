@@ -1,0 +1,33 @@
+<h1>Blocks#edit</h1>
+
+
+<p>Find me in app/views/blocks/edit.html.erb</p>
+
+<p>This will require a different clock. Or the same clock but an option that grabs the time from time seconds form. </p>
+
+<p>Alternatively, could just use a different clock here but one that grabs the number from the form.</p>
+
+
+<%= simple_form_for @block do |f|%>
+
+<% if @block.errors.any? %>
+
+	<div id="errors">
+		<%= @block.errors.count %> prevented this from saving.
+	</div>
+
+	<ul>
+		<% @block.errors.full_messages.each do |msg| %>
+			<li><%= msg %></li>
+		<% end %>
+	</ul>
+
+<% end %>
+
+<div class="panel-body">
+	<%= f.input :des, input_html: {class: 'form-control'} %>
+	<%= f.input :time, input_html: {class: 'form-control seconds'} %>
+	
+</div>
+<%= f.button :submit, class: "btn btn-primary" %>
+<% end %>

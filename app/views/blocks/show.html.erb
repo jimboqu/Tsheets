@@ -1,2 +1,20 @@
-<h1>Blocks#show</h1>
-<p>Find me in app/views/blocks/show.html.erb</p>
+<h1 style="text-align: center;">Block show</h1>
+
+
+
+
+
+
+
+<ul class="list-group">
+	<li class="list-group-item">Client: <%= link_to @block.job.client.name, client_path(@block.job.client.id) %></li>
+	<li class="list-group-item">Job: <%= link_to @block.job.name, job_path(@block.job.id) %></li>
+	<li class="list-group-item">Block created: <%= @block.created_at %></li>
+	<li class="list-group-item">Block last updated: <%= @block.updated_at %></li>
+	<li class="list-group-item">Block description: <%= @block.des %></li>
+	<li class="list-group-item">Block time: <%= @block.time / 60 %> minutes or <%= @block.time %> seconds </li>
+
+</ul>
+
+
+<%= link_to 'Edit', edit_block_path(@block), class: "btn btn-success" %>

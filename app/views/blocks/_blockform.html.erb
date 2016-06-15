@@ -1,0 +1,65 @@
+<h1>Client: <%= @client.name%></h1>
+<br>
+<div class="your-clock"></div>
+<br> 
+<script>
+	var clock = $('.your-clock').FlipClock({
+		autoStart:false
+});
+
+	$(document).ready(function(){
+		$('.start').click(function(){
+			clock.start(function() {
+
+			});
+		})
+		$('.stop').click(function(){
+			clock.stop(function() {
+		});
+		})
+		$('.reset').click(function(){
+			clock.setTime(0);
+		})
+		$('.get_time').click(function(){
+			var time = clock.getTime(time); 
+			console.log(time.time);
+			$('.seconds').val( + time.time);
+		})
+
+	})
+</script>
+
+
+<div class="btn-group" role="group" aria-label="...">
+  <button type="button" class="btn btn-primary start">Start</button>
+  <button type="button" class="btn btn-success get_time">Get time</button>
+  <button type="button" class="btn btn-info stop">Stop</button>
+  <button type="button" class="btn btn-danger reset">Reset</button>
+</div>
+
+<%= link_to 'Create job', new_job_path, class: 'btn btn-primary' %>
+
+<%= simple_form_for @block do |f|%>
+
+<% if @block.errors.any? %>
+
+	<div id="errors">
+		<%= @block.errors.count %> prevented this from saving.
+	</div>
+
+	<ul>
+		<% @block.errors.full_messages.each do |msg| %>
+			<li><%= msg %></li>
+		<% end %>
+	</ul>
+
+<% end %>
+
+<div class="panel-body">
+	<%= f.input :job_id, collection: @job, input_html: {class: 'form-control'}, prompt: "Choose a job" %>
+	<%= f.input :des, input_html: {class: 'form-control'} %>
+	<%= f.input :time, input_html: {class: 'form-control seconds'} %>
+	
+</div>
+<%= f.button :submit, class: "btn btn-primary" %>
+<% end %>
