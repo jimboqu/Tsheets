@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
  
 
+  get 'staticpages/about'
+
+  get 'staticpages/do'
+
   devise_for :users
   resources :clients
   resources :blocks
