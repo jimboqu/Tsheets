@@ -7,11 +7,17 @@
 	<th>Total time</th>
 	<% @jobs.each do |a| %>
 	<tr>
-		<td><%= a.client.name %></td>
+		<td><%= link_to a.client.name, client_path(a.client_id) %></td>
 		<td><%= link_to a.name, job_path(a) %></td>
+		<% a.blocks.each do |l| %>
+		<% @tot += l.time %>
 		
-		<td><%= @more %> mins</td>
+		
+		<% end %>
+		<td><%= @tot %></td>
+		
 	
 	</tr>
 	<% end %>
 </table>
+

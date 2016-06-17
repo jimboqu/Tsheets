@@ -1,6 +1,9 @@
 class JobsController < ApplicationController
   def index
     @jobs = Job.where(user_id: current_user.id)
+    
+    @tot = 0
+
     @more = 0
     @jobs.each do |p|
     @total = p.blocks
@@ -9,11 +12,7 @@ class JobsController < ApplicationController
         @more += b.time
       end
     end
-  end
-
-
-
-    
+  end 
   end
 
   def show

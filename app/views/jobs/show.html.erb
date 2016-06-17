@@ -16,13 +16,13 @@
 		
 		<td><%= a.des %></td>
 		<td><%= a.updated_at %></td>
-		<td><%= a.time %></td>
+		<td><%= a.time / 60 %></td>
 		
 	</tr>
 	<% end %>
 </table>
 
-<p>Total time:<%= @more %> minutes</p>
+<p>Total time:<%= @more / 60 %> minutes</p>
 
 <%= link_to 'Edit', edit_job_path, class: "btn btn-primary" %>
 <%= link_to 'Block', new_block_path(client: @job.client_id), class: "btn btn-success" %>
