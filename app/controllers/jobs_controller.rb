@@ -4,6 +4,8 @@ class JobsController < ApplicationController
     
     @tot = 0
 
+
+
     @more = 0
     @jobs.each do |p|
     @total = p.blocks
@@ -11,6 +13,7 @@ class JobsController < ApplicationController
       if b.time?
         @more += b.time
       end
+
     end
   end 
   end
@@ -52,6 +55,15 @@ class JobsController < ApplicationController
 	else
 		render 'new'
 	end
+  end
+
+  def update
+    @job = Job.find(params[:id])
+    if @job.update(job_params)
+      redirect_to @job
+    else
+      render 'edit'
+    end
   end
 
   private 
