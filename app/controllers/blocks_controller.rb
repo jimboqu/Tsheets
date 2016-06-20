@@ -27,8 +27,18 @@ class BlocksController < ApplicationController
   end
 
   def edit
-    @block = current_user.blocks.build
+    @block = Block.find(params[:id])
+    @job = Job.where(client_id: @block.job.client.id)
     authorize @block
+  end
+
+  def update
+    @block = Block.find(params[:id])
+    if @block.update(block_params)
+      redirect_to @block
+    else
+      render 'edit'
+    end
   end
 
   private 

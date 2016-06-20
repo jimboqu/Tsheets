@@ -14,7 +14,7 @@
 	<% @job.blocks.each do |a| %>
 	<tr>
 		
-		<td><%= a.des %></td>
+		<td><%= link_to a.des, block_path(a) %></td>
 		<td><%= a.updated_at %></td>
 		<td><%= a.time / 60 %></td>
 		

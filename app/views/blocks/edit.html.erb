@@ -25,6 +25,7 @@
 <% end %>
 
 <div class="panel-body">
+	<%= f.input :job_id, collection: @job, input_html: {class: 'form-control'}, prompt: "Choose a job" %>
 	<%= f.input :des, input_html: {class: 'form-control'} %>
 	<%= f.input :time, input_html: {class: 'form-control seconds'} %>
 	
