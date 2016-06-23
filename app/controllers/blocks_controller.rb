@@ -44,7 +44,7 @@ class BlocksController < ApplicationController
   private 
 
   	def block_params
-  		params.require(:block).permit(:des, :time, :user_id, :job_id )
+  		params.require(:block).permit(:des, :time, :user_id, :job_id, :live )
   	end
 
   	def correct_user
