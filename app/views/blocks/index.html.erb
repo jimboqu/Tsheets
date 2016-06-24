@@ -1,10 +1,21 @@
-<% @blocks.each do |a| %>
-<ul>
-	<li><strong>Block description: </strong><%= link_to a.des, block_path(a) %></li>
-	<li><strong>Job name:</strong> <%= a.job.name %></li>
-	<li><strong>Client name:</strong> <%= a.job.client.name %></li>
-	<li><strong>Time:</strong><%= a.time %></li>
-</ul>
-<% end %>
 
-<p>Add Kaminari here to paginate</p>
+
+
+
+<table class="table table-striped">
+	<tr>
+		<th>Client</th>
+		<th>Job</th>
+		<th>Block</th>
+		<th>Time</th>
+	</tr>
+	<% @blocks.each do |a| %>
+	<tr>
+		<td><%= link_to a.job.client.name, client_path(a.job.client.id) %></td>
+		<td><%= link_to a.job.name, job_path(a.job.id) %></td>
+		<td><%= link_to a.des, block_path(a) %></td>
+		<td><%= a.time / 60 %></td>
+	</tr>
+	<% end %>
+</table>
+
