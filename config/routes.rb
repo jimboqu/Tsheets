@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get 'staticpages/about'
 
   get 'staticpages/do'
-
+  get 'blocks/block_archive'
   devise_for :users
   resources :clients
   resources :blocks

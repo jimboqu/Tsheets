@@ -1,6 +1,6 @@
 class BlocksController < ApplicationController
   def index
-  	@blocks = Block.where(user_id: current_user.id)
+  	@blocks = Block.where(user_id: current_user.id, live: true)
   end
 
   def new
@@ -39,6 +39,10 @@ class BlocksController < ApplicationController
     else
       render 'edit'
     end
+  end
+
+  def block_archive
+    @blocks = Block.where(user_id: current_user.id, live: false)
   end
 
   private 
