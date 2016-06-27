@@ -1,6 +1,9 @@
 <h1>Client: <%= @client.name%></h1>
 <br>
 <div class="your-clock"></div>
+<div class="clock">
+	
+</div>
 <br> 
 <script>
 	var clock = $('.your-clock').FlipClock({
@@ -26,7 +29,13 @@
 			$('.seconds').val( + time.time);
 		})
 
+		$('.timep').click(function(){
+		$('.clock').timer();
 	})
+
+	})
+
+
 </script>
 
 
@@ -35,6 +44,7 @@
   <button type="button" class="btn btn-success get_time">Get time</button>
   <button type="button" class="btn btn-info stop">Stop</button>
   <button type="button" class="btn btn-danger reset">Reset</button>
+  <button type="button" class="btn btn-info timep">Timep</button>
 </div>
 
 <%= link_to 'Create job', new_job_path, class: 'btn btn-primary' %>

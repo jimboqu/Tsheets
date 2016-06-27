@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require flipclock
+//= require timer
 //= require bootstrap-sprockets
 //= require turbolinks
 //= require_tree .
