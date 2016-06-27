@@ -1,9 +1,14 @@
-<h1>Client: <%= @client.name%></h1>
-<br>
-<div class="your-clock"></div>
-<div class="clock">
-	
+
+
+<div class="container">
+
+	<div class="col-md-4 col-md-offset-4">
+		<h1>Client: <%= @client.name%></h1>
+		<div class="clock"></div>
+	</div>
 </div>
+
+
 <br> 
 <script>
 	var clock = $('.your-clock').FlipClock({
@@ -12,26 +17,24 @@
 
 	$(document).ready(function(){
 		$('.start').click(function(){
-			clock.start(function() {
-
-			});
+			$('.clock').timer({format: '%H:%M:%S'}, {seconds: 0});
 		})
 		$('.stop').click(function(){
-			clock.stop(function() {
-		});
+			$('.clock').timer('pause');
 		})
 		$('.reset').click(function(){
-			clock.setTime(0);
+			$('.clock').timer('reset');
 		})
 		$('.get_time').click(function(){
-			var time = clock.getTime(time); 
-			console.log(time.time);
-			$('.seconds').val( + time.time);
-		})
+		var moment = $('.clock').data('seconds');
 
-		$('.timep').click(function(){
-		$('.clock').timer();
+		$('.secs').val(+ moment)
+		console.log(moment);
+
+
 	})
+
+		
 
 	})
 
@@ -43,8 +46,8 @@
   <button type="button" class="btn btn-primary start">Start</button>
   <button type="button" class="btn btn-success get_time">Get time</button>
   <button type="button" class="btn btn-info stop">Stop</button>
-  <button type="button" class="btn btn-danger reset">Reset</button>
-  <button type="button" class="btn btn-info timep">Timep</button>
+  
+  
 </div>
 
 <%= link_to 'Create job', new_job_path, class: 'btn btn-primary' %>
@@ -68,7 +71,7 @@
 <div class="panel-body">
 	<%= f.input :job_id, collection: @job, input_html: {class: 'form-control'}, prompt: "Choose a job" %>
 	<%= f.input :des, input_html: {class: 'form-control'} %>
-	<%= f.input :time, input_html: {class: 'form-control seconds'} %>
+	<%= f.input :time, input_html: {class: 'form-control secs'} %>
 </div>
 <%= f.button :submit, class: "btn btn-primary" %>
 <% end %>
