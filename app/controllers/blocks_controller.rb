@@ -41,6 +41,12 @@ class BlocksController < ApplicationController
     end
   end
 
+  def destroy
+    @block = Block.find(params[:id])
+    @block.destroy
+      redirect_to blocks_path
+  end
+
   def block_archive
     @blocks = Block.where(user_id: current_user.id, live: false)
   end

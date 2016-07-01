@@ -7,14 +7,18 @@
 		<th>Client</th>
 		<th>Job</th>
 		<th>Block</th>
+		<th>Update</th>
 		<th>Time</th>
+		<th>Delete</th>
 	</tr>
 	<% @blocks.each do |a| %>
 	<tr>
 		<td><%= link_to a.job.client.name, client_path(a.job.client.id) %></td>
 		<td><%= link_to a.job.name, job_path(a.job.id) %></td>
 		<td><%= link_to a.des, block_path(a) %></td>
+		<td><%= a.updated_at %></td>
 		<td><%= a.time / 60 %></td>
+		<td><%= link_to 'delete', block_path(a), method: :delete, class: "btn btn-danger" %></td>	
 	</tr>
 	<% end %>
 </table>
