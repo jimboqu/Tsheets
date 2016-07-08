@@ -9,9 +9,16 @@
 <h3>List of jobs</h3>
 <ul class="list-group">
 <% @client.jobs.each do |a| %>
-<li class="list-group-item"><%= link_to a.name, job_path(a) %> Blocks: <%= a.blocks.count %></li>
+	<li class="list-group-item"><%= link_to a.name, job_path(a) %> <br><%= a.info %> Total blocks: <%= a.blocks.count %> Live blocks: <%= a.blocks.where(live: true).count %></li>
+	<% a.blocks.each do |c| %>
+	<% if c.live == true %>
+	<li class="list-group-item"> <%= link_to c.des, block_path(c) %> Time: <%= c.time / 60 %> minutes</li>
+	<% end %>
+	<% end %>
 <% end %>
 </ul>
+
+
 
 <%= link_to 'Delete', client_path, method: :delete, class: "btn btn-danger" %>
 <%= link_to 'Edit', edit_client_path, class: "btn btn-primary" %>
@@ -20,11 +27,6 @@
 
 <br>
 <br>
-<p>Things to go in:</p>
 
-<ul>
-	<li>Put in clock</li>
-	<li>paginate jobs by date</li>
-</ul>
 
 </div> 
